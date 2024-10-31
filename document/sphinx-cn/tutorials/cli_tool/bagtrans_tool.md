@@ -14,11 +14,11 @@
 pip3 install build wheel setuptools --upgrade
 ```
 
-2. 需要编译生成 aimrt 源码库中的 ros2_plugin_proto 消息类型，并且在 build.sh 文件中确保`AIMRT_BUILD_ROS2_PLUGIN` 、 `AIMRT_BUILD_RECORD_PLAYBACK_PLUGIN` 和 `AIMRT_BUILD_BAGTRANS` 选项为`ON`，执行您 aimrt 源码库中的`build.sh`文件进行编译，编译完成后，在  `<path_to_your_aimrt_src_code>/src/tools/bagtrans/build/dist` 文件夹下可找到编译生成的`whl`文件。
+2. 需要编译生成 aimrt 源码库中的 ros2_plugin_proto 消息类型，并且在 build.sh 文件中确保`AIMRT_BUILD_ROS2_PLUGIN` 、 `AIMRT_BUILD_RECORD_PLAYBACK_PLUGIN` 和 `AIMRT_BUILD_BAGTRANS` 选项为`ON`，执行您 aimrt 源码库中的`build.sh`文件进行编译，编译完成后，在  `<path_to_your_build_dir>/bagtrans_pkg/bagtrans/dist` 文件夹下可找到编译生成的`whl`文件。
 
 3. 在终端中执行以下命令:
 ```
-cd <path_to_your_aimrt_src_code>/src/tools/bagtrans/build/dist
+cd <path_to_your_build_dir>/bagtrans_pkg/bagtrans/dist
 pip3 install bagtrans-<version>-py3-none-any.whl
 ```
 **bagtrans**工具将会自动安装到您的 python 环境中。使用 `pip list | grep bagtrans`可查看是否安装成功。可使用 `pip uninstall bagtrans`进行卸载。
@@ -28,7 +28,7 @@ pip3 install bagtrans-<version>-py3-none-any.whl
 
 **bagtrans** 工具的使用方法如下：
 
-每次使用前，需要使用命令 `source <path_to_your_aimrt_src_code>/src/tools/bagtrans/build/share/ros2_plugin_proto/local_setup.bash` 以修改环境变量。
+每次使用前，需要使用命令 `source <path_to_your_build_dir>/bagtrans_pkg/bagtrans/ros2_plugin_proto/share/ros2_plugin_proto/local_setup.bash` 以修改环境变量。
 
 transbag 命令的使用方法如下：
 

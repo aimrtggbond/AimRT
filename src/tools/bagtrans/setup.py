@@ -1,15 +1,17 @@
 # Copyright (c) 2023, AgiBot Inc.
 # All rights reserved.
 
-from setuptools import find_packages, setup
+from setuptools import setup
 
 package_name = 'bagtrans'
+
+with open("../VERSION", "r") as f:
+    version = f.read().strip()
 
 setup(
     name=package_name,
     app='bagtrans',
-    version='0.0.1',
-    packages=find_packages(exclude=['test']),
+    version=version,
     author='Yu Guanlin',
     author_email='yuguanlin@agibot.com',
     description='transfer aimrt bag file to ros2 bag file',

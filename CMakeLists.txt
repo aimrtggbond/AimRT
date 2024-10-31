@@ -308,7 +308,16 @@ if(AIMRT_INSTALL
    AND AIMRT_BUILD_ROS2_PLUGIN
    AND AIMRT_BUILD_RECORD_PLAYBACK_PLUGIN
    AND AIMRT_BUILD_BAGTRANS)
-  install(CODE "execute_process(COMMAND \"${CMAKE_COMMAND}\" --build \"${CMAKE_BINARY_DIR}\" --config ${CMAKE_BUILD_TYPE} --target bagtrans)")
+  install(CODE "
+    execute_process(
+      COMMAND \"${CMAKE_COMMAND}\" --build \"${CMAKE_BINARY_DIR}\" --config ${CMAKE_BUILD_TYPE} --target bagtrans
+    )
+   execute_process(
+     COMMAND \"${CMAKE_COMMAND}\" -E copy_directory 
+       \"${CMAKE_BINARY_DIR}/bagtrans_pkg/bagtrans/dist\"
+       \"\${CMAKE_INSTALL_PREFIX}/bin\"
+    )
+  ")
 endif()
 
 # Print all aimrt options
