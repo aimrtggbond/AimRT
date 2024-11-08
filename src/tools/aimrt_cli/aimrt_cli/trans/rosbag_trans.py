@@ -357,6 +357,10 @@ class AimrtbagToRos2:
                 data        BLOB NOT NULL)
             """)
 
+            self.cursor.execute("CREATE INDEX idx_timestamp ON messages(timestamp)")
+
+            self.cursor.execute("BEGIN TRANSACTION")
+
             self.cursor.execute("""
             INSERT INTO messages_temp (topic_id, timestamp, data)
             SELECT topic_id, timestamp, data
@@ -368,6 +372,7 @@ class AimrtbagToRos2:
 
             self.cursor.execute("ALTER TABLE messages_temp RENAME TO messages")
 
+            self.cursor.execute("COMMIT")
             self.conn.commit()
 
         except Exception as e:
