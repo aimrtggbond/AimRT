@@ -12,6 +12,10 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: 'recursive'
+      - name: install
+        run: |
+          sudo apt-get update
+          
       - name: setup
         env:
           CC: /usr/bin/clang-18
