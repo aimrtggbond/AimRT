@@ -2,9 +2,6 @@ name: CI/CD Workflow
 
 on:
   push:
-    paths-ignore:
-      - '.github/**'
-      - 'document/**'
     branches:
       - '*'
       
