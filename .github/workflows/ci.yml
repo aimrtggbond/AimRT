@@ -1,0 +1,24 @@
+name: CI/CD Workflow
+
+on:
+  push:
+    paths-ignore:
+      - '.github/**'
+      - 'document/**'
+    branches:
+      - '*'
+      
+jobs:        
+  check_format:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+      - name: setup
+        env:
+          CC: /usr/bin/clang-18
+          CXX: /usr/bin/clang++-18
+        run: |
+          ./build.sh 
+  
